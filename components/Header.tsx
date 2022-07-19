@@ -1,10 +1,18 @@
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import logo from "../assets/Images/mauro-davoli.png";
 
 const Header = () => {
+  const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   return (
     <header className="bg-white dark:bg-slate-800 flex justify-between p-5 max-w-7xl mx-auto">
